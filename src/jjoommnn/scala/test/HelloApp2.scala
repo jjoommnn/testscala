@@ -18,7 +18,10 @@ object HelloApp2 extends App {
     a ! "222";
     a ! "333";
     
-    val b = actor {
-        
+    val b = () => loop {
+        react
+        {
+            case _ => println()
+        }
     }
 }
