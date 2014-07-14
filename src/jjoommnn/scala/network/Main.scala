@@ -22,44 +22,6 @@ object Main extends App
     
     case class Message( ctx:ChannelHandlerContext, msg:Object )
     
-    /*
-    class ClientActor extends ChannelInboundHandlerAdapter with Actor
-    {
-        override def channelRead( ctx:ChannelHandlerContext, msg:Object ):Unit =
-        {
-            this ! Message( ctx, msg )
-        }
-        
-        override def channelInactive( ctx:ChannelHandlerContext ):Unit =
-        {
-            this ! Message( ctx, "disconnected" )
-        }
-        
-        override def exceptionCaught( ctx:ChannelHandlerContext, cause:Throwable ) =
-        {
-            cause.printStackTrace()
-        }
-        
-        def act =
-        {
-            loop
-            {
-                react
-                {
-                    case Message( ctx, "disconnected" ) =>
-                        println( "Client Disconnected : " + ctx.channel() )
-                        this.exit();
-                                
-                    case Message( ctx, msg ) =>
-                        println( "Client : " + ctx.channel() + " sent : " + msg )
-                        ctx.write( msg )
-                        ctx.flush()
-                }
-            }
-        }
-    }
-    */
-    
     val bossGroup = new NioEventLoopGroup();
     val workerGroup = new NioEventLoopGroup();
     
