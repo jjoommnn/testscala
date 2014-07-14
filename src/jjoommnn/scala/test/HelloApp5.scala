@@ -9,4 +9,10 @@ object HelloApp5 extends App
     
     
     ff = (i:Int) => Unit;
+    
+    def foo = {
+        def foo2 = {
+            
+        }
+    }
 }
