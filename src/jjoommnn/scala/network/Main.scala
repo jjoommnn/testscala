@@ -83,7 +83,7 @@ object Main extends App
                 
                 override def channelInactive( ctx:ChannelHandlerContext ):Unit =
                 {
-                    this ! Message( ctx, "disconnected" )
+                    this ! Message( ctx, "_disconnected_" )
                 }
         
                 def act =
@@ -92,7 +92,7 @@ object Main extends App
                     {
                         react
                         {
-                            case Message( ctx, "disconnected" ) =>
+                            case Message( ctx, "_disconnected_" ) =>
                                 println( "Client Disconnected : " + ctx.channel() )
                                 this.exit();
                                 
