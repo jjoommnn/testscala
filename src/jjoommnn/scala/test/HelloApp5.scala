@@ -8,17 +8,29 @@ object HelloApp5 extends App
     
     ff = (i:Int) => Unit;
     
-    def foo = {
-        def foo2 = {
-            
+    def foo():()=>String = {
+        def innerFoo():String = {
+            this.f();//"inner"
         }
+        innerFoo
     }
+    
+    val fp = foo();
+    println( fp() );
     
     def aaa( f: =>String ) = f;
     
     def bbb( f:()=>String ) = f;
     
-    aaa { "aaa" }
+    aaa{ "aaa" }
     
     bbb( () => "bbb" );
+    
+    val aaa2 = aaa _;
+    
+    val bbb2 = bbb _;
+    
+    aaa2( { "aaa2" } )
+    
+    bbb2 { () => "bbb2" }
 }
