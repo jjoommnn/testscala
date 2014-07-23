@@ -34,7 +34,7 @@ object Main extends App
         b.childOption[java.lang.Boolean]( ChannelOption.SO_KEEPALIVE, true );
         b.childHandler( (ch:SocketChannel) =>
         {
-            println( "New Client : " + ch );
+            println( "New Client : " + ch )
             
             val ca = new ChannelInboundHandlerAdapter with Actor
             {
@@ -71,15 +71,15 @@ object Main extends App
             ch.pipeline().addLast( ca )
         });
         
-        val f:ChannelFuture = b.bind( 9999 ).sync();
+        val f:ChannelFuture = b.bind( 9999 ).sync()
         
-        println( "Listening..." );
+        println( "Listening..." )
         
-        f.channel().closeFuture().sync();
+        f.channel().closeFuture().sync()
     }
     finally
     {
-        workerGroup.shutdownGracefully();
-        bossGroup.shutdownGracefully();
+        workerGroup.shutdownGracefully()
+        bossGroup.shutdownGracefully()
     }
 }
