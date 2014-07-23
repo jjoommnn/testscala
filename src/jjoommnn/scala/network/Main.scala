@@ -22,7 +22,7 @@ object Main extends App
         }
     */
     
-    implicit class MyChannelInitializer(f:(SocketChannel) => AnyRef) extends ChannelInitializer[SocketChannel] {
+    implicit class MyChannelInitializer(f:(SocketChannel) => Any) extends ChannelInitializer[SocketChannel] {
         override def initChannel(ch: SocketChannel):Unit = f(ch)
     }
     
