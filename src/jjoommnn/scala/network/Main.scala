@@ -15,10 +15,16 @@ import io.netty.channel.Channel
 
 object Main extends App
 {
+    /*
     implicit def function2ChannelInitializer( f:(SocketChannel) => AnyRef ) =
         new ChannelInitializer[SocketChannel] {
             override def initChannel(ch: SocketChannel):Unit = f(ch)
         }
+    */
+    
+    implicit class MyChannelInitializer(f:(SocketChannel) => AnyRef) extends ChannelInitializer[SocketChannel] {
+        override def initChannel(ch: SocketChannel):Unit = f(ch)
+    }
     
     case class Message( ctx:ChannelHandlerContext, msg:Object )
     
