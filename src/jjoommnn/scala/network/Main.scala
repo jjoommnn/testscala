@@ -28,16 +28,15 @@ object Main extends App
     
     case class Message( ctx:ChannelHandlerContext, msg:Object )
     
-    val bossGroup = new NioEventLoopGroup();
-    val workerGroup = new NioEventLoopGroup();
-    
+    val bossGroup = new NioEventLoopGroup()
+    val workerGroup = new NioEventLoopGroup()
     try
     {
-        val b = new ServerBootstrap();
-        b.group( bossGroup, workerGroup );
-        b.channel( classOf[NioServerSocketChannel] );
-        b.option[java.lang.Integer]( ChannelOption.SO_BACKLOG, 128 );
-        b.childOption[java.lang.Boolean]( ChannelOption.SO_KEEPALIVE, true );
+        val b = new ServerBootstrap()
+        b.group( bossGroup, workerGroup )
+        b.channel( classOf[NioServerSocketChannel] )
+        b.option[java.lang.Integer]( ChannelOption.SO_BACKLOG, 128 )
+        b.childOption[java.lang.Boolean]( ChannelOption.SO_KEEPALIVE, true )
         b.childHandler( (ch:SocketChannel) =>
         {
             println( "New Client : " + ch )
@@ -62,7 +61,7 @@ object Main extends App
                         {
                             case Message( ctx, "_disconnected_" ) =>
                                 println( "Client Disconnected : " + ctx.channel() )
-                                this.exit();
+                                this.exit()
                                 
                             case Message( ctx, msg ) =>
                                 println( "Client : " + ctx.channel() + " sent : " + msg )
