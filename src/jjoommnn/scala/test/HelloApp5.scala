@@ -22,9 +22,11 @@ object HelloApp5 extends App
     
     def bbb( f:()=>String ) = f;
     
-    aaa{ "aaa" }
+    aaa { "aaa" }
     
     bbb( () => "bbb" );
+    
+    //bbb { "bbb" }; //error
     
     val aaa2 = aaa _;
     
@@ -33,4 +35,14 @@ object HelloApp5 extends App
     aaa2( { "aaa2" } )
     
     bbb2 { () => "bbb2" }
+    
+    
+    
+    def ccc( a:Int )( b: => String ) = a + b
+    
+    def ddd( a:Int, b: => String ) = a + b
+    
+    ccc( 10 ) { "ccc" }
+    
+    ddd( 10, { "ddd" } )
 }

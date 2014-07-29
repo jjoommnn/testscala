@@ -30,6 +30,7 @@ object Main extends App
     
     val bossGroup = new NioEventLoopGroup()
     val workerGroup = new NioEventLoopGroup()
+    
     try
     {
         val b = new ServerBootstrap()
@@ -71,6 +72,7 @@ object Main extends App
                     }
                 }
             }
+            
             ca.start()
             
             ch.pipeline().addLast( ca )
