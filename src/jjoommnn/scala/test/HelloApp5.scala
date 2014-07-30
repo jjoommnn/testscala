@@ -24,9 +24,10 @@ object HelloApp5 extends App
     
     aaa { "aaa" }
     
-    bbb( () => "bbb" );
+    bbb { () => "bbb" };
     
     //bbb { "bbb" }; //error
+    
     
     val aaa2 = aaa _;
     
