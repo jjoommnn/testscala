@@ -9,7 +9,9 @@ object HelloApp5 extends App
     ff = (i:Int) => Unit;
     
     def foo():()=>String = {
+        val aa = 10;
         def innerFoo():String = {
+            println( aa );
             this.f();//"inner"
         }
         innerFoo
